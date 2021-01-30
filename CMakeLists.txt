@@ -4,7 +4,7 @@ project(heroku_kies)
 set(CMAKE_CXX_STANDARD 17)
 
 if(PROD)
-add_link_options(-static)
+    add_link_options(-static)
 endif()
 
 add_subdirectory(lib)
