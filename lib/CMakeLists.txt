@@ -11,17 +11,20 @@ elseif(APPLE)
     set(DEV TRUE PARENT)
 endif()
 
-# 
+#Create the library
 add_library(lib lib.cpp)
 
-if(PROD)
-target_include_directories(lib PUBLIC /usr/local/include
-        cinatra/include)
+#The common include directory and link library
+target_include_directories(lib PUBLIC cinatra/include spdlog/include)
 
-target_link_libraries(lib PUBLIC pthread)
+#The online specific include directory and link library because online environment is linux
+if(PROD)
+target_include_directories(lib PUBLIC /usr/local/include)
+
+target_link_libraries(lib PUBLIC pthread boost_system)
 endif()
 
+#The development specific configuration because I use MacOS most time.
 if(DEV)
-    target_include_directories(lib PUBLIC /Users/sunbo/Downloads/FrameWork/boost/include
-            cinatra/include)
+    target_include_directories(lib PUBLIC /Users/sunbo/Downloads/FrameWork/boost/include)
 endif()
