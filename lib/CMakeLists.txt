@@ -1,21 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
-#Check The OS
-if(UNIX AND NOT APPLE)
-    message("This is production environment")
-    set(PROD TRUE)
-    set(PROD TRUE PARENT)
-elseif(APPLE)
-    message("This is development environment")
-    set(DEV TRUE)
-    set(DEV TRUE PARENT)
-endif()
-
 #Create the library
 add_library(lib lib.cpp)
 
 #The common include directory and link library
 target_include_directories(lib PUBLIC cinatra/include spdlog/include)
+
 
 #The online specific include directory and link library because online environment is linux
 if(PROD)
