@@ -19,11 +19,9 @@ target_include_directories(lib PUBLIC cinatra/include spdlog/include)
 
 #The online specific include directory and link library because online environment is linux
 if(PROD)
-    find_package(Boost)
-
     target_include_directories(lib PUBLIC /usr/local/include)
 
-    target_link_libraries(lib PUBLIC pthread ${Boost_LIBRARIES})
+    target_link_libraries(lib PUBLIC pthread boost_system)
 endif()
 
 #The development specific configuration because I use MacOS most time.

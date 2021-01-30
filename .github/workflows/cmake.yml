@@ -30,7 +30,7 @@ jobs:
 
     - name: Install dependency
       # Install the content of dependency
-      run: sudo apt update && sudo apt install -y libboost-dev
+      run: sudo apt update && sudo apt install -y libboost-dev libboost-system-dev
 
     - name: Configure CMake
       # Use a bash shell so we can use the same syntax for environment variable
