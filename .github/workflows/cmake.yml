@@ -5,6 +5,8 @@ on: [push]
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
+  CC: gcc-10
+  CXX: g++-10
 
 jobs:
   build:
@@ -22,6 +24,14 @@ jobs:
       # We'll use this as our working directory for all subsequent commands
       run: cmake -E make_directory ${{github.workspace}}/build
 
+    - name: Fetch git submodule
+      # Fetch submodule from the github and prepare the content
+      run: git submodule update --init --recursive
+
+    - name: Install dependency
+      # Install the content of dependency
+      run: apt update && apt install -y libboost-dev
+
     - name: Configure CMake
       # Use a bash shell so we can use the same syntax for environment variable
       # access regardless of the host operating system
@@ -31,6 +41,7 @@ jobs:
       # and build directories, but this is only available with CMake 3.13 and higher.  
       # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+
 
     - name: Build
       working-directory: ${{github.workspace}}/build
