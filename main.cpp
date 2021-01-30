@@ -10,7 +10,7 @@ int main() {
     http_server server(max_thread_num);
     server.listen("0.0.0.0", port); //maybe segment fault when there is not PORT set
     server.set_http_handler<GET, POST>("/", [](request& req, response& res) {
-        res.set_status_and_content(status_type::ok, "hello world");
+        res.set_status_and_content(status_type::ok, R"(<html><head></head><body><h1 style="color:red">Hello World</h1></body></body>)");
     });
 
     server.run();
