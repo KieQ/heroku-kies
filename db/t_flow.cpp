@@ -3,7 +3,7 @@
 
 void insertRequest(std::string ip){
     try{
-        const char *url = std::getenv("JDBC_DATABASE_URL");
+        const char *url = std::getenv("DATABASE_URL");
         if (url == nullptr){
             url = "dbname = testdb user = postgres password = cohondob hostaddr = 127.0.0.1 port = 5432";
         }
