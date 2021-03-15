@@ -12,10 +12,6 @@ elseif(APPLE)
     set(DEV TRUE)
 endif()
 
-if(PROD)
-    add_link_options(-static)
-endif()
-
 add_subdirectory(lib)
 
 
