@@ -12,7 +12,7 @@ target_link_libraries(lib PUBLIC fmt)
 #The online part
 if(PROD)
     target_include_directories(lib PUBLIC /usr/local/include)
-    target_link_libraries(lib PUBLIC boost_system pthread)
+    target_link_libraries(lib PUBLIC boost_system pthread pqxx pq)
 endif()
 
 #The development part
