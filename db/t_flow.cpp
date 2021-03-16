@@ -28,9 +28,7 @@ namespace DB{
             }
 
             result = worker.exec(fmt::format(R"SQL(INSERT INTO t_flow(ip_addr) VALUES ('{}'))SQL", ip));
-            for(auto col=0;col<result.columns();col++){
-                SPDLOG_DEBUG("{}", result.column_name(col));
-            }
+            SPDLOG_DEBUG("{}", result.affected_rows);
             worker.commit();
 
             conn.disconnect();
