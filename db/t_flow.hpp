@@ -4,7 +4,7 @@
 
 namespace DB{
 
-void insertRequest(std::string ip);
+void record_request(std::string ip);
 
 }
 #endif

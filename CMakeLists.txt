@@ -14,7 +14,9 @@ endif()
 
 add_subdirectory(lib)
 
+aux_source_directory(db db)
+aux_source_directory(handler handler)
 
-add_executable(heroku_kies main.cpp db/t_flow.cpp)
+add_executable(heroku_kies main.cpp ${db} ${handler})
 target_link_libraries(heroku_kies PRIVATE lib)
 install(TARGETS heroku_kies DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/..)
