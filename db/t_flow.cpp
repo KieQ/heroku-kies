@@ -1,6 +1,7 @@
 #include <pqxx/pqxx>
 #include <iostream>
 #include <spdlog/spdlog.h>
+#include <fmt/format.h>
 namespace DB{
 
     void insertRequest(std::string ip){
@@ -26,7 +27,7 @@ namespace DB{
             }
             worker.commit();
 
-            result = worker.exec_params0(R"SQL(INSERT INTO t_flow(ip_addr) VALUES ('$1'))SQL", ip);
+            result = worker.exec(fmt::format(R"SQL(INSERT INTO t_flow(ip_addr) VALUES ('{}'))SQL", ip));
             for(auto col=0;col<result.columns();col++){
                 SPDLOG_DEBUG("{}", result.column_name(col));
             }
