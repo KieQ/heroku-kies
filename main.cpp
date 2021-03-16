@@ -6,7 +6,7 @@ using namespace cinatra;
 
 
 void bind_http(http_server& server){
-    server.set_http_handler("/",handler::home_page);
+    server.set_http_handler<GET,POST>("/",handler::home_page);
 }
 
 int main() {

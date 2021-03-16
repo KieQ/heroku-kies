@@ -12,6 +12,8 @@ elseif(APPLE)
     set(DEV TRUE)
 endif()
 
+add_compile_options("SHELL:--param ggc-min-expand=1" "SHELL:--param ggc-min-heapsize=1024")
+
 add_subdirectory(lib)
 
 aux_source_directory(db db)
