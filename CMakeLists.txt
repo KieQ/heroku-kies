@@ -12,7 +12,7 @@ elseif(APPLE)
     set(DEV TRUE)
 endif()
 
-add_compile_options("SHELL:--param ggc-min-expand=1" "SHELL:--param ggc-min-heapsize=1024")
+add_compile_options("SHELL:--param ggc-min-expand=1" "SHELL:--param ggc-min-heapsize=131072")
 
 add_subdirectory(lib)
 
